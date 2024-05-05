@@ -1,1 +1,1 @@
-streamlit langchain openai -dev
+langchain openai -dev
