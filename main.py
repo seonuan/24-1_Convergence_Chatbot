@@ -3,24 +3,26 @@ from langchain.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage
 import os
  
-API_KEY= os.getenv("FLASK_API_KEY")
-# OpenAI API key 설정
+API_KEY= os.getenv("FLASK_API_KEY") # OpenAI API key 설정
 OPENAI_API_KEY = API_KEY
+
 # ChatOpenAI 챗봇 모델 생성
 chat = ChatOpenAI(
   temperature=0.7, 
   model_name="gpt-3.5-turbo", 
   api_key=OPENAI_API_KEY
-)
+)  
+
 if 'conversation_history' not in st.session_state:
     st.session_state.conversation_history = []
-    
+
+# 대화기록 남기기
 def add_to_conversation_user(prompt):
-    st.session_state.conversation_history.append(("당신", prompt))
+    st.session_state.conversation_history.append(("당신: ", prompt))
 def add_to_conversation_gpt(response):
-    st.session_state.conversation_history.append(("상대:", response))
+    st.session_state.conversation_history.append(("상대: ", response))
  
-# 사용자 입력과 챗봇의 시스템 메시지를 리스트에 추가
+# gpt prompt
 def send_click(chat, prompt):
     messages = [
             SystemMessage(content="""
@@ -78,20 +80,17 @@ question: 안녕하세요?
  
 # Streamlit 앱 생성
 def main():
-    # Streamlit 앱 제목 설정
-    st.subheader("대화하기")
-    # 사용자 입력을 받는 텍스트 입력 위젯 생성
+    st.subheader("대화하기")      # Streamlit 앱 제목 설정
+
     user_input = st.text_input("Question: ", key='prompt')
-    # Send 버튼을 눌렀을 때 send_click() 함수 실행
     if st.button("Send"):
         add_to_conversation_user(user_input)
         response = send_click(chat, user_input)
-        add_to_conversation_gpt(response)
-        # 응답을 출력하는 서브헤더와 성공 메시지 위젯 생성
-        
-    for role, message in reversed.st.session_state.conversation_history:
+        add_to_conversation_gpt(response)    # 응답을 출력하는 서브헤더와 성공 메시지 위젯 생성
+
+ # 역순으로 대화기록 출력
+    for role, message in reversed(st.session_state.conversation_history):
         st.write(f"{role} {message}")
  
 if __name__ == '__main__':
-    # 앱 실행
     main()
