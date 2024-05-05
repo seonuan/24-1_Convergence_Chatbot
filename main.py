@@ -1,7 +1,6 @@
 import streamlit as st
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage
-from openai import OpenAI
 import os
  
 API_KEY= os.getenv("FLASK_API_KEY")
@@ -83,20 +82,19 @@ question: 안녕하세요?
  
 # Streamlit 앱 생성
 def main():
-    # Streamlit 앱 제목 설정
     st.title('대화하기')
     # 사용자 입력을 받는 텍스트 입력 위젯 생성
     user_input = st.text_input("Question: ", key='prompt')
     # Send 버튼을 눌렀을 때 send_click() 함수 실행
     if st.button("Send"):
         add_to_conversation_user(user_input)
+        st.session_state.prompt=""
         response = send_click(chat, user_input)
         add_to_conversation_gpt(response)
         # 응답을 출력하는 서브헤더와 성공 메시지 위젯 생성
-        
-    st.subheader("Conversation History")
+    
     for role, message in st.session_state.conversation_history:
-        st.write(f"{role} {message}")
+        st.write(f"{role} {message}") 
  
 if __name__ == '__main__':
     # 앱 실행
