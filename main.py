@@ -16,9 +16,9 @@ if 'conversation_history' not in st.session_state:
     st.session_state.conversation_history = []
     
 def add_to_conversation_user(prompt):
-    st.session_state.conversation_history.append(("USER:", prompt))
+    st.session_state.conversation_history.append(("당신", prompt))
 def add_to_conversation_gpt(response):
-    st.session_state.conversation_history.append(("SYSTEM:", response))
+    st.session_state.conversation_history.append(("상대:", response))
  
 # 사용자 입력과 챗봇의 시스템 메시지를 리스트에 추가
 def send_click(chat, prompt):
@@ -79,7 +79,7 @@ question: 안녕하세요?
 # Streamlit 앱 생성
 def main():
     # Streamlit 앱 제목 설정
-    st.title('대화하기')
+    st.subheader("대화하기")
     # 사용자 입력을 받는 텍스트 입력 위젯 생성
     user_input = st.text_input("Question: ", key='prompt')
     # Send 버튼을 눌렀을 때 send_click() 함수 실행
@@ -89,8 +89,7 @@ def main():
         add_to_conversation_gpt(response)
         # 응답을 출력하는 서브헤더와 성공 메시지 위젯 생성
         
-    st.subheader("Conversation History")
-    for role, message in st.session_state.conversation_history:
+    for role, message in reversed.st.session_state.conversation_history:
         st.write(f"{role} {message}")
  
 if __name__ == '__main__':
