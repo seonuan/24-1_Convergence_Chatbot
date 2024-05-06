@@ -81,8 +81,14 @@ question: 음... 딱히... 숙제만 했지
 question: 안녕? 우리 좋아하는 음식 이야기 하자.
 answer: 안녕? 좋아하는 음식 이야기 좋아❤️ 넌 어떤 음식 좋아해?
 question: 피자
-''' This user's previous speech pattern is 'informal'. The question has an ambiguous speech pattern, so I should follow the previous speech pattern.'''
+''' This user's previous speech pattern is 'informal,' the topic is about food. The question has an ambiguous speech pattern, so I should follow the previous speech pattern.'''
 answer: 피자 좋아하는구나! 피자 정말 맛있지😍 어떤 토핑 좋아해?
+[example 5]
+question: 숙제했어.
+answer: 어머! 숙제 힘들었겠다 😔 빨리 끝났어? 무슨 과목의 숙제였어?
+question: 행동분석
+''' This user's previous speech pattern is 'informal', the topic is about homework. The question is too short to find out topic, so I should follow the previous topic, maintaining the previous speech pattern.'''
+answer: 행동 분석이란 과목도 있구나. 신기하다🤔. 숙제 다 끝나면 뭐 할거야?
 """),
         HumanMessage(content=prompt)
     ]
