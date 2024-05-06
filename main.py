@@ -15,7 +15,7 @@ chat = ChatOpenAI(
 
 if 'conversation_history' not in st.session_state:
     st.session_state.conversation_history = []
-    st.session_state.conversation_history.append("⭐: ", "안녕하세요, 저는 당신의 친구 찰리입니다. 편하게 말 걸어 주세요!")
+    add_to_conversation_gpt("안녕하세요, 저는 당신의 친구 찰리입니다. 편하게 말 걸어 주세요!")
 
 # 대화기록 남기기
 def add_to_conversation_user(prompt):
