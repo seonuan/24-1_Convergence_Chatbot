@@ -83,7 +83,7 @@ def main():
 
     if 'conversation_history' not in st.session_state:
        st.session_state.conversation_history = []
-       greeting="안녕하세요, 저는 당신의 친구 찰리입니다. 편하게 말 걸어 주세요!"
+       greeting="안녕하세요, 저는 당신의 친구 ⭐찰리⭐입니다. 편하게 말 걸어 주세요!"
        add_to_conversation_gpt(greeting)
   
     user_input = st.text_input("유저: ", key='prompt')
