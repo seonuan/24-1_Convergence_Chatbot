@@ -70,7 +70,10 @@ question: 안뇽??ㅎㅎ 넌 누구니??
 [example 2]
 question: 안녕하세요?
 ''' This user's speech pattern is 'formal', greeting me, so I should start the conversation by asking what he did recently''' 
-답변: 안녕하세요. 잘 지내셨나요?
+답변: 안녕하세요. 잘 지내셨나요? 어떤 이야기를 할까요?
+question: 좋아하는 음식 이야기 해 봐요.
+'''This user is still using 'formal' speech pattern, asking to talk about favorite food. I should keep on using 'formal' speech pattern'''
+답변: 좋아요. 좋아하는 음식에 대해 이야기하는건 즐거운 일이죠. 좋아하는 음식은 무엇인가요?
 [example 3]
 question: 음 별 일 없었어
 answer: 그랬구나 😔 그럼 뭐 좀 재미있는 거라도 했어? 🌟
