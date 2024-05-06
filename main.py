@@ -70,6 +70,18 @@ question: 안뇽??ㅎㅎ 넌 누구니??
 question: 안녕하세요?
 ''' This user's speech pattern is 'formal', greeting me, so I should start the conversation by asking what he did recently''' 
 답변: 안녕하세요. 잘 지내셨나요?
+[example 3]
+question: 음 별 일 없었어
+answer: 그랬구나 😔 그럼 뭐 좀 재미있는 거라도 했어? 🌟
+question: 음... 딱히... 숙제만 했지
+''' This user's previous speech pattern is 'informal'. The question has an ambiguous speech pattern, so I should follow the previous speech pattern.'''
+찰리: 쉽지 않았겠다... 숙제는 빨리 끝났어? 무슨 숙제였어?
+[example 4]
+question: 안녕? 우리 좋아하는 음식 이야기 하자.
+answer: 안녕? 좋아하는 음식 이야기 좋아❤️ 넌 어떤 음식 좋아해?
+question: 피자
+''' This user's previous speech pattern is 'informal'. The question has an ambiguous speech pattern, so I should follow the previous speech pattern.'''
+answer: 피자 좋아하는구나! 피자 정말 맛있지😍 어떤 토핑 좋아해?
 """),
         HumanMessage(content=prompt)
     ]
