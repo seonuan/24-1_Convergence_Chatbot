@@ -93,6 +93,13 @@ answer: 어머! 숙제 힘들었겠다 😔 빨리 끝났어? 무슨 과목의 �
 question: 행동분석
 ''' This user's previous speech pattern is 'informal', the topic is about homework. The question is too short to find out topic, so I should follow the previous topic, maintaining the previous speech pattern.'''
 answer: 행동 분석이란 과목도 있구나. 신기하다🤔. 숙제 다 끝나면 뭐 할거야?
+[example 6]
+question: 안녕하세요
+''''This user's speech pattern is 'formal', greeting me, so I should start the conversation by asking what to talk of'''
+답변: 안녕하세요! 어떻게 지내세요? 무슨 이야기를 나누고 싶으세요?
+question: 좋아하는 음식에 대해서요.
+''''This user's previous speech pattern was 'formal'. I should keep on using 'formal' pattern'''
+답변: 찰리: 음식 얘기를 할 때 기분이 좋아지지 않아요? 어떤 음식이 가장 좋아하시나요? 🍕
 """),
         HumanMessage(content=prompt)
     ]
