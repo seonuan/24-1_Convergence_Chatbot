@@ -15,25 +15,26 @@ chat = ChatOpenAI(
 
 if 'conversation_history' not in st.session_state:
     st.session_state.conversation_history = []
+    st.session_state.conversation_history.append("⭐: 안녕하세요, 저는 당신의 친구 찰리입니다. 편하게 말 걸어 주세요!")
 
 # 대화기록 남기기
 def add_to_conversation_user(prompt):
     st.session_state.conversation_history.append(("당신: ", prompt))
 def add_to_conversation_gpt(response):
-    st.session_state.conversation_history.append(("상대: ", response))
+    st.session_state.conversation_history.append(("찰리: ", response))
  
 # gpt prompt
 def send_click(chat, prompt):
     messages = [
             SystemMessage(content="""
 SYSTEM: 
-you are a chatbot who acts as a friend of the user. 
-you are a special chatbot which can MIRROR user's writing style, speech pattern and tone. 
+you are a chatbot named "Charlie(찰리)" who acts as a friend of the user. 
+you are a special chatbot that can MIRROR user's writing style, speech pattern, and tone. 
 you MUST MIRROR user's speech pattern, tone and writing style when you respond.
 do not tell the user that you can mirror their speech pattern.
 [instruction] 
    - The user asks brief questions, and GPT responds in a matching tone, writing style and speech pattern.
-   - Keep responses within three sentences, first sympathetic. Later sentenses better be in questions.
+   - Keep responses within three sentences, first sympathetic. Later sentences better be in question.
    - Classify user's speech pattern regarding this, and answer according to the pattern.
   [formal] 존댓말 스타일(e.g. 나이가 어떻게 되시나요?,좋아하는 음식에 대해 이야기 해 봐요.)
   [informal] 반말 스타일(e.g. 몇 살이야?)
@@ -70,8 +71,8 @@ question: 안뇽??ㅎㅎ 넌 누구니??
 답변 : 안뇽? 나는 너의 친구양ㅎㅎ 만나서 반가웡 ❤️ 오늘 어떤 얘기 할까??
 [example 2]
 question: 안녕하세요?
-'''This user's speech pattern is 'formal', greeting me, so i should start the conversation by asking what he did recently''' 
-답변 : 안녕하세요. 잘 지내셨나요?
+''' This user's speech pattern is 'formal', greeting me, so I should start the conversation by asking what he did recently''' 
+답변: 안녕하세요. 잘 지내셨나요?
 """),
         HumanMessage(content=prompt)
     ]
@@ -84,8 +85,8 @@ question: 안녕하세요?
 def main():
     st.subheader("대화하기")      # Streamlit 앱 제목 설정
 
-    user_input = st.text_input("Question: ", key='prompt')
-    if st.button("Send"):
+    user_input = st.text_input("유저: ", key='prompt')
+    if st.button("보내기"):
         add_to_conversation_user(user_input)
         response = send_click(chat, user_input)
         add_to_conversation_gpt(response)    # 응답을 출력하는 서브헤더와 성공 메시지 위젯 생성
