@@ -33,16 +33,17 @@ i=0
 def main():
     global i
     st.subheader("대화하기")      # Streamlit 앱 제목 설정
-    st.session_state.conversation_history = []
-    greeting="안녕하세요, 찰리입니다. 편하게 말 걸어 주세요."
-    add_to_conversation_gpt(greeting)
+     if 'conversation_history' not in st.session_state:
+       st.session_state.conversation_history = []
+       greeting="안녕하세요, 찰리입니다. 편하게 말 걸어 주세요!"
+       add_to_conversation_gpt(greeting)
 
     user_input = st.text_input("유저: ", key='prompt')
     if st.button("보내기"):
         add_to_conversation_user(user_input)
         response = send_click(i)
         add_to_conversation_gpt(response)    # 응답을 출력하는 서브헤더와 성공 메시지 위젯 생성
-    i+=1
+        global i+=1
     
  # 역순으로 대화기록 출력
     for role, message in reversed(st.session_state.conversation_history):
