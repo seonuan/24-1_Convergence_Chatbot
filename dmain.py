@@ -11,7 +11,7 @@ def add_to_conversation_gpt(response):
     st.session_state.conversation_history.append(("찰리: ", response))
 
 def send_click(i):
-    sleep(1.5)
+    time.sleep(1.5)
     if i==0: return "안녕하세요, 오랜만이에요. 어떤 주제로 대화를 나누면 좋을까요?"
     elif i==1: return "좋아요, 같이 이야기 해 봐요. 어떤 음식을 가장 좋아하시나요?"
     elif i==2: return "피자를 가장 좋아하시는군요. 그 이유가 뭔가요?"
