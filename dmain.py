@@ -32,7 +32,7 @@ def main():
     add_to_conversation_gpt(greeting)
     
     for i in range(11):
-        user_input = st.text_input("유저: ", key='prompt')
+        user_input = st.text_input("유저: ", key=i)
         if st.button("보내기"):
             add_to_conversation_user(user_input)
             response = send_click(i)
