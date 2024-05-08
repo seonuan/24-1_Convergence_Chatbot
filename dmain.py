@@ -23,7 +23,6 @@ def send_click(i):
     elif i==8: response= "액션영화를 좋아하시는군요. '미션임파서블' 시리즈 어떠신가요? 혹시 이미 보신 적이 있나요?"
     elif i==9: response= "그렇군요. 그렇다면 '범죄도시' 시리즈 어떠신가요?"
     else : response= "다행이네요. 친구와 함께 영화를 보면서 즐거운 시간을 보내시길 바라요."
-    add_to_conversation_gpt(response)
     return response
     
 global i
@@ -42,7 +41,7 @@ def main():
     user_input = st.text_input("유저: ", key='prompt')
     if st.button("보내기"):
         add_to_conversation_user(user_input)
-        response = send_click(i)
+        response = send_click(temp)
         add_to_conversation_gpt(response)    # 응답을 출력하는 서브헤더와 성공 메시지 위젯 생성
         temp+=1
         i=temp
