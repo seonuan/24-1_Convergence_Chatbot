@@ -25,26 +25,24 @@ def send_click(i):
     else : response= "다행이네요. 친구와 함께 영화를 보면서 즐거운 시간을 보내시길 바라요."
     return response
     
-global i
-i=0
-
 # Streamlit 앱 생성
 def main():
-    global i
-    temp=i
     st.subheader("대화하기")      # Streamlit 앱 제목 설정
+    
     if 'conversation_history' not in st.session_state:
        st.session_state.conversation_history = []
        greeting="안녕하세요, 찰리입니다. 편하게 말 걸어 주세요!"
        add_to_conversation_gpt(greeting)
 
+    if 'i' not in st.session_state:
+        st.session_state.i = 0
+
     user_input = st.text_input("유저: ", key='prompt')
     if st.button("보내기"):
         add_to_conversation_user(user_input)
-        response = send_click(temp)
+        response = send_click(i)
         add_to_conversation_gpt(response)    # 응답을 출력하는 서브헤더와 성공 메시지 위젯 생성
-        temp+=1
-        i=temp
+        st.session_state.i += 1
     
  # 역순으로 대화기록 출력
     for role, message in reversed(st.session_state.conversation_history):
