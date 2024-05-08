@@ -33,7 +33,7 @@ i=0
 def main():
     global i
     st.subheader("대화하기")      # Streamlit 앱 제목 설정
-     if 'conversation_history' not in st.session_state:
+    if 'conversation_history' not in st.session_state:
        st.session_state.conversation_history = []
        greeting="안녕하세요, 찰리입니다. 편하게 말 걸어 주세요!"
        add_to_conversation_gpt(greeting)
