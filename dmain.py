@@ -23,10 +23,12 @@ def send_click(i):
     elif i==9: return "그렇군요. 그렇다면 '범죄도시' 시리즈 어떠신가요?"
     else : return "다행이네요. 친구와 함께 영화를 보면서 즐거운 시간을 보내시길 바라요."
     
+global i
 i=0
 
 # Streamlit 앱 생성
 def main():
+    global i
     st.subheader("대화하기")      # Streamlit 앱 제목 설정
     st.session_state.conversation_history = []
     greeting="안녕하세요, 찰리입니다. 편하게 말 걸어 주세요."
