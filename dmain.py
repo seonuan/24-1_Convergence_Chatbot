@@ -40,7 +40,7 @@ def main():
     user_input = st.text_input("유저: ", key='prompt')
     if st.button("보내기"):
         add_to_conversation_user(user_input)
-        response = send_click(i)
+        response = send_click(st.session_state.i)
         add_to_conversation_gpt(response)    # 응답을 출력하는 서브헤더와 성공 메시지 위젯 생성
         st.session_state.i += 1
     
