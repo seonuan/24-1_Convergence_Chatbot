@@ -23,7 +23,7 @@ def send_click(i):
     elif i==9: return "그렇군요. 그렇다면 '범죄도시' 시리즈 어떠신가요?"
     else : return "다행이네요. 친구와 함께 영화를 보면서 즐거운 시간을 보내시길 바라요."
     
-
+i=0
 
 # Streamlit 앱 생성
 def main():
@@ -31,14 +31,13 @@ def main():
     st.session_state.conversation_history = []
     greeting="안녕하세요, 찰리입니다. 편하게 말 걸어 주세요."
     add_to_conversation_gpt(greeting)
-    
-    for i in range(11):
-        user_input = st.text_input("유저: ", key=f'{i}')
-        if st.button("보내기"):
-            add_to_conversation_user(user_input)
-            response = send_click(i)
-            add_to_conversation_gpt(response)    # 응답을 출력하는 서브헤더와 성공 메시지 위젯 생성
-    
+
+    user_input = st.text_input("유저: ", key='prompt')
+    if st.button("보내기"):
+        add_to_conversation_user(user_input)
+        response = send_click(i)
+        add_to_conversation_gpt(response)    # 응답을 출력하는 서브헤더와 성공 메시지 위젯 생성
+    i+=1
     
  # 역순으로 대화기록 출력
     for role, message in reversed(st.session_state.conversation_history):
