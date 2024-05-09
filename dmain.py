@@ -5,16 +5,13 @@ import os
 import time
 
 # 대화기록 남기기
-def submit():
-    st.session_state.prompt = st.session_state.widget
-    st.session_state.widget = ""
 def add_to_conversation_user(prompt):
-    st.session_state.conversation_history.append(("유저: ", prompt))
+    st.session_state.conversation_history.append(("나", prompt))
 def add_to_conversation_gpt(response):
-    st.session_state.conversation_history.append(("찰리: ", response))
+    st.session_state.conversation_history.append(("찰리", response))
 
 def send_click(i):
-    time.sleep(2)
+    time.sleep(1.5)
     if i==0: response= "안녕하세요, 오랜만이에요. 어떤 주제로 대화를 나누면 좋을까요?"
     elif i==1: response= "좋아요, 같이 이야기 해 봐요! 어떤 음식을 가장 좋아하시나요??"
     elif i==2: response= "피자를 젤 좋아하는군요ㅎㅎ 이유가 뭔가요??"
@@ -40,7 +37,7 @@ def main():
     if 'i' not in st.session_state:
         st.session_state.i = 0
 
-    user_input = st.text_input("유저: ", key='prompt',on_change=submit)
+    user_input = st.text_input("유저: ", key='prompt')
     if st.button("보내기"):
         add_to_conversation_user(user_input)
         response = send_click(st.session_state.i)
@@ -49,7 +46,10 @@ def main():
     
  # 역순으로 대화기록 출력
     for role, message in reversed(st.session_state.conversation_history):
-        st.write(f"{role} {message}")
+        if role=="나" : 
+            st.write(f"{role}: {message}")
+        else : 
+            st.markdown(f":bluebackground[{role}: {message}]")
  
 if __name__ == '__main__':
     main()
