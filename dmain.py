@@ -49,7 +49,7 @@ def main():
         if role=="나" : 
             st.write(f"{role}: {message}")
         else : 
-            st.markdown(f":bluebackground[{role}: {message}]")
+            st.markdown(f''':bluebackground[{role}: {message}]''')
  
 if __name__ == '__main__':
     main()
