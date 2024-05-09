@@ -1,7 +1,6 @@
 import streamlit as st
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage
-import os
 import time
 
 # 대화기록 남기기
@@ -49,7 +48,7 @@ def main():
         if role=="나" : 
             st.write(f"{role}: {message}")
         else : 
-            st.markdown(f''':rainbow[{role}: {message}]''')
+            st.markdown(f''':blue-background[{role}: {message}]''')
  
 if __name__ == '__main__':
     main()
