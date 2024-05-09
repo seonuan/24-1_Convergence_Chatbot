@@ -5,9 +5,9 @@ import time
 
 # 대화기록 남기기
 def add_to_conversation_user(prompt):
-    st.session_state.conversation_history.append((user, prompt))
+    st.session_state.conversation_history.append(("user", prompt))
 def add_to_conversation_gpt(response):
-    st.session_state.conversation_history.append((charlie, response))
+    st.session_state.conversation_history.append(("charlie", response))
 
 def send_click(i):
     time.sleep(1.5)
@@ -45,7 +45,7 @@ def main():
     
  # 역순으로 대화기록 출력
     for role, message in reversed(st.session_state.conversation_history):
-        if role==user: 
+        if role=="user": 
             st.write(f"나: {message}")
         else : 
             st.markdown(f''':blue-background[찰리: {message}]''')
