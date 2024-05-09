@@ -46,9 +46,9 @@ def main():
  # 역순으로 대화기록 출력
     for role, message in reversed(st.session_state.conversation_history):
         if role=="user": 
-            st.write(f"나: {message}")
+            st.write(f"**나: {message}**")
         else : 
-            st.markdown(f''':blue-background[찰리: {message}]''')
+            st.markdown(f'''**:blue-background[찰리: {message}]**''')
  
 if __name__ == '__main__':
     main()
