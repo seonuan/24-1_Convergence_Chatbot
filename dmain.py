@@ -5,13 +5,16 @@ import os
 import time
 
 # 대화기록 남기기
+def submit():
+    st.session_state.prompt = st.session_state.widget
+    st.session_state.widget = ""
 def add_to_conversation_user(prompt):
-    st.session_state.conversation_history.append(("당신: ", prompt))
+    st.session_state.conversation_history.append(("유저: ", prompt))
 def add_to_conversation_gpt(response):
     st.session_state.conversation_history.append(("찰리: ", response))
 
 def send_click(i):
-    time.sleep(1.5)
+    time.sleep(2)
     if i==0: response= "안녕하세요, 오랜만이에요. 어떤 주제로 대화를 나누면 좋을까요?"
     elif i==1: response= "좋아요, 같이 이야기 해 봐요! 어떤 음식을 가장 좋아하시나요??"
     elif i==2: response= "피자를 젤 좋아하는군요ㅎㅎ 이유가 뭔가요??"
@@ -37,7 +40,7 @@ def main():
     if 'i' not in st.session_state:
         st.session_state.i = 0
 
-    user_input = st.text_input("유저: ", key='prompt')
+    user_input = st.text_input("유저: ", key='prompt',on_change=submit)
     if st.button("보내기"):
         add_to_conversation_user(user_input)
         response = send_click(st.session_state.i)
