@@ -36,7 +36,7 @@ def main():
     if 'i' not in st.session_state:
         st.session_state.i = 0
 
-    user_input = st.text_input("유저: ", key='prompt')
+    user_input = st.text_input("메시지: ", key='prompt')
     if st.button("보내기"):
         add_to_conversation_user(user_input)
         response = send_click(st.session_state.i)
@@ -46,9 +46,9 @@ def main():
  # 역순으로 대화기록 출력
     for role, message in reversed(st.session_state.conversation_history):
         if role=="user": 
-            st.write(f"**나: {message}**")
+            st.write(f"나: {message}")
         else : 
-            st.markdown(f'''**:blue-background[찰리: {message}]**''')
+            st.markdown(f''':blue-background[찰리: {message}]''')
  
 if __name__ == '__main__':
     main()
