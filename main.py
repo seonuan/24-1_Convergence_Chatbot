@@ -10,7 +10,7 @@ OPENAI_API_KEY = API_KEY
 # ChatOpenAI 챗봇 모델 생성
 chat = ChatOpenAI(
   temperature=0.7, 
-  model_name="gpt-3.5-turbo", 
+  model_name="gpt-4o", 
   api_key=OPENAI_API_KEY
 )  
 
