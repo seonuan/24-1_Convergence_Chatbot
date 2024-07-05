@@ -3,7 +3,8 @@ from langchain.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage
 import os
  
-API_KEY= os.getenv("FLASK_API_KEY") # OpenAI API key 설정
+# API_KEY= os.getenv("FLASK_API_KEY") # OpenAI API key 설정
+API_KEY= st.secrets["FLASK_API_KEY"]
 OPENAI_API_KEY = API_KEY
 
 # ChatOpenAI 챗봇 모델 생성
